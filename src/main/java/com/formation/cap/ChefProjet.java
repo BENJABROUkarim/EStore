@@ -4,6 +4,10 @@ public class ChefProjet implements Post {
 
 	private int nbrAnnee;
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getNbrAnnee() {
 		return nbrAnnee;
 	}
