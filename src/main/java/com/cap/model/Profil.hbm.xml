@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 juin 2017 12:48:06 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.cap.model.Profil" table="PROFIL">
+        <id name="idp" type="int" access="field">
+            <column name="IDP" />
+            <generator class="increment" />
+        </id>
+        <property name="nom" type="java.lang.String">
+            <column name="NOM" />
+        </property>
+        <property name="prenom" type="java.lang.String">
+            <column name="PRENOM" />
+        </property>
+    </class>
+</hibernate-mapping>

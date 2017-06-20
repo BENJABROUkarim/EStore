@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 juin 2017 12:48:06 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.cap.model.Item" table="ITEM">
+        <id name="idItem" type="int" access="field">
+            <column name="IDITEM" />
+            <generator class="increment" />
+        </id>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="qte" type="int">
+            <column name="QTE" />
+        </property>
+        <property name="prix" type="java.lang.String">
+            <column name="PRIX" />
+        </property>
+        <property name="designation" type="java.lang.String">
+            <column name="DESIGNATION" />
+        </property>
+        <property name="img" type="java.lang.String">
+            <column name="IMG" />
+        </property>
+    </class>
+</hibernate-mapping>

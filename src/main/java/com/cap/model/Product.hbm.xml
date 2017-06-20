@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 juin 2017 12:48:06 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.cap.model.Product" table="PRODUCT">
+        <id name="idpr" type="int" access="field">
+            <column name="IDPR" />
+            <generator class="increment" />
+        </id>
+        <property name="libelle" type="java.lang.String">
+            <column name="LIBELLE" />
+        </property>
+        <set name="items" table="ITEM" inverse="false" lazy="false">
+            <key>
+                <column name="IDPR" />
+            </key>
+            <one-to-many class="com.cap.model.Item" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dev" class="com.formation.cap.Developpeur"></bean>
+	<bean id="chf" class="com.formation.cap.ChefProjet"></bean>
+
+	<bean id="emp" class="com.formation.cap.Employee">
+		<property name="post" ref="dev"></property>
+	</bean>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/storedb" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingLocations" value="classpath:com/cap/model/*.hbm.xml" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+	<bean id="mProduct" class="com.cap.dao.MProduct">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+	<bean id="mProfil" class="com.cap.dao.MProfil">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="mAccount" class="com.cap.dao.MAccount">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+</beans>
