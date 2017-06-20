@@ -9,6 +9,13 @@
 	<bean id="emp" class="com.formation.cap.Employee">
 		<property name="post" ref="dev"></property>
 	</bean>
+	<!--pour activer la gestion déclarative des transaction sur les méthodes 
+		marquées par @Transactional -->
+	<tx:annotation-driven />
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -29,13 +36,13 @@
 		</property>
 	</bean>
 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
-        <property name="sessionFactory">
-            <ref bean="sessionFactory" />
-        </property>
-    </bean>
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 	<bean id="mProduct" class="com.cap.dao.MProduct">
-	<property name="sessionFactory" ref="sessionFactory"></property>
-</bean>
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	<bean id="mProfil" class="com.cap.dao.MProfil">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
