@@ -6,9 +6,11 @@ import java.util.Set;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.cap.dao.IProfileRepo;
 import com.cap.dao.MAccount;
 import com.cap.dao.MProduct;
 import com.cap.dao.MProfil;
+import com.cap.dao.ServiceRepo;
 import com.cap.model.Account;
 import com.cap.model.Item;
 import com.cap.model.Product;
@@ -39,7 +41,16 @@ public class TestMain {
 		// product.setItems(set);
 		mProductDao.addCategorie(product);
 
-		 mProductDao.addItem(item, 1);
+		mProductDao.addItem(item, 1);
+		// ----------
+		ApplicationContext context1 = new ClassPathXmlApplicationContext("beans-spring-data-jpa.xml");
+		// IProfileRepo iProfileRepo = (IProfileRepo)
+		// context1.getBean("iProfilDao") ;
+		 Integer integer = new Integer(2);
+		// iProfileRepo.findByIdp(2);
+		ServiceRepo repo = (ServiceRepo) context1.getBean("serviceProfil");
+		repo.findByIdp(2);
+		
 	}
 
 }
